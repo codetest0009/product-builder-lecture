@@ -9,21 +9,25 @@
             --text-color: #333;
             --button-bg: #333;
             --button-text: white;
+            --input-bg: #fff;
         }
         [data-theme='dark'] {
             --bg-color: #121212;
             --text-color: #f0f0f0;
             --button-bg: #f0f0f0;
             --button-text: #333;
+            --input-bg: #333;
         }
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; padding: 20px; }
         .ball { display: inline-block; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; text-align: center; font-weight: bold; margin: 5px; color: white; }
         .num-1 { background-color: #fbc02d; }
         .num-2 { background-color: #4caf50; }
         .num-3 { background-color: #2196f3; }
         .num-4 { background-color: #f44336; }
         .num-5 { background-color: #9c27b0; }
-        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: var(--button-bg); color: var(--button-text); border: none; border-radius: 5px; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: var(--button-bg); color: var(--button-text); border: none; border-radius: 5px; margin-top: 10px; }
+        form { display: flex; flex-direction: column; gap: 10px; margin-top: 30px; width: 100%; max-width: 400px; }
+        input, textarea { padding: 10px; border-radius: 5px; border: 1px solid #ccc; background-color: var(--input-bg); color: var(--text-color); }
     </style>
 </head>
 <body>
@@ -31,6 +35,14 @@
     <div id="result"></div>
     <button onclick="draw()">번호 뽑기</button>
     <button onclick="toggleTheme()">테마 변경</button>
+
+    <h2>제휴 문의</h2>
+    <form action="https://formspree.io/f/xbgjarjj" method="POST">
+        <input type="text" name="name" placeholder="이름" required>
+        <input type="email" name="email" placeholder="이메일" required>
+        <textarea name="message" placeholder="문의 내용" required></textarea>
+        <button type="submit">전송</button>
+    </form>
 
     <script>
         function draw() {
