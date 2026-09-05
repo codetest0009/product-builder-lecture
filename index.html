@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로또 번호 추첨기</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f0f0f0; }
+        .ball { display: inline-block; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; text-align: center; font-weight: bold; margin: 5px; color: white; }
+        .num-1 { background-color: #fbc02d; }
+        .num-2 { background-color: #4caf50; }
+        .num-3 { background-color: #2196f3; }
+        .num-4 { background-color: #f44336; }
+        .num-5 { background-color: #9c27b0; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #333; color: white; border: none; border-radius: 5px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>로또 번호 추첨</h1>
+    <div id="result"></div>
+    <button onclick="draw()">번호 뽑기</button>
+
+    <script>
+        function draw() {
+            let nums = [];
+            while(nums.length < 6) {
+                let n = Math.floor(Math.random() * 45) + 1;
+                if(!nums.includes(n)) nums.push(n);
+            }
+            nums.sort((a,b) => a - b);
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+            nums.forEach(n => {
+                let colorClass = 'num-' + (Math.floor((n-1)/10) + 1);
+                resultDiv.innerHTML += `<div class="ball ${colorClass}">${n}</div>`;
+            });
+        }
+    </script>
+</body>
+</html>
